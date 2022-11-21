@@ -5,9 +5,6 @@ from math import log
 from DecideByRandomForest import voteType
 
 
-
-
-
 def classifyDataSet(dataSet, axis, value):  # 获取按某个属性的某一值分类后的集合,剔除某一属性
     reDataSet = []
     for featureVector in dataSet:
