@@ -30,11 +30,6 @@ def chooseBestFeatureToSplit(dataSet):  # 选择最优的分类属性
         for value in uniqueVals:  # 遍历所有该属性的不同取值
             subDataSet = classifyDataSet(dataSet, i, value)  # 获取该属性取值为value的集合
             conditionalEnt += (float(len(subDataSet)) / len(dataSet)) * calculateInfoEnt(subDataSet)  # 按属性值分类后的熵
-            # splitInfo -= (float(len(subDataSet)) / len(dataSet)) * log((float(len(subDataSet)) / len(dataSet)), 2);
-            # if splitInfo!=0:
-            #     infoGain = (baseEntropy - conditionalEnt) / splitInfo
-            # else:
-            #     infoGain=999   #C4.5算法
         infoGain = infoEnt - conditionalEnt  # 计算信息增益，跳出循环的时候，infoGain即为该属性的信息增益
         if (infoGain >= bestInfoGain):  # 选取信息增益最大的属性#注意这里要是大于等于，不能是大于，是大于的话，当只剩两个，且其中一个比较纯的时候，就会出现不能对bestFeature赋值的情况，那时返回bestFeature的是-1，就会导致出现bug
             #并且这种情况只在这一个属性纯的情况下发生
